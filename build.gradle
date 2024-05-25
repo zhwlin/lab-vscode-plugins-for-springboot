@@ -32,6 +32,8 @@ dependencies {
 	testAnnotationProcessor 'org.projectlombok:lombok'
 
 	 compileOnly 'com.sun.xml.ws:jaxws-ri:4.0.2'
+	 implementation 'com.sun.xml.ws:jaxws-rt:4.0.2'
+	 implementation 'jakarta.xml.ws:jakarta.xml.ws-api'
 	 implementation 'jakarta.xml.bind:jakarta.xml.bind-api'
 	 implementation 'com.sun.xml.bind:jaxb-impl'
 }
