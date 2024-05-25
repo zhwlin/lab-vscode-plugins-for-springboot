@@ -1,0 +1,49 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.6'
+	id 'io.spring.dependency-management' version '1.1.5'
+	id "io.freefair.lombok" version "8.6"
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+repositories {
+	mavenLocal()
+	maven {
+		url 'https://maven.aliyun.com/repository/public'
+	}
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	compileOnly group: 'org.springframework.boot', name: 'spring-boot-devtools'
+
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testCompileOnly 'org.projectlombok:lombok'
+	testAnnotationProcessor 'org.projectlombok:lombok'
+
+	 compileOnly 'com.sun.xml.ws:jaxws-ri:4.0.2'
+	 implementation 'jakarta.xml.bind:jakarta.xml.bind-api'
+	 implementation 'com.sun.xml.bind:jaxb-impl'
+}
+
+task wsimport(type: JavaExec) {
+    main = 'com.sun.tools.ws.WsImport'
+    classpath = configurations.runtimeClasspath
+    args = ['-keep', '-s', 'src/main/java', '-d', 'build/classes/java/main', 'http://www.dneonline.com/calculator.asmx?wsdl']
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+

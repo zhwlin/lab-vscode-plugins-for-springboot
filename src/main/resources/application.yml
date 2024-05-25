@@ -1,0 +1,13 @@
+spring.application.name: demo
+
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile:
+      - test
+
+
+test.hello: world

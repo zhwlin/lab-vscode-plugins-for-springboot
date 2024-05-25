@@ -1,0 +1,12 @@
+--- 
+spring.config.activate.on-profile: test2
+
+
+test.hello: test2
+
+
+--- 
+spring.config.activate.on-profile: test2-1
+
+test.additional: 2-1
+
